@@ -19,6 +19,8 @@ const { id = 'blog-sort-select' } = Astro.props;
 const sortOptions: { value: string; label: string; icon: IconName }[] = [
   { value: 'newest', label: t.blog.sortNewest, icon: 'calendar' },
   { value: 'oldest', label: t.blog.sortOldest, icon: 'fieldCalendar' },
+  { value: 'az', label: t.blog.sortAz, icon: 'chevronRight' },
+  { value: 'za', label: t.blog.sortZa, icon: 'chevronLeft' },
   { value: 'short', label: t.blog.sortShortRead, icon: 'clock' },
   { value: 'long', label: t.blog.sortLongRead, icon: 'heroStatClock' },
 ];

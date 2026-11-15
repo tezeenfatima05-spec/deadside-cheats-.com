@@ -5,7 +5,21 @@ import zlib from 'node:zlib';
 import { resolvePathRedirect } from './redirects.mjs';
 import { resolveCheckoutPathRedirect } from '../src/config/checkout-redirects.mjs';
 
-const CANONICAL_HOST = 'dotacheats.com';
+const CANONICAL_HOST = 'deadside-cheats.com';
+
+const PREVIEW_HOST_PATTERNS = [
+  /\.up\.railway\.app$/i,
+  /\.railway\.app$/i,
+  /\.workers\.dev$/i,
+  /\.pages\.dev$/i,
+  /\.vercel\.app$/i,
+  /\.netlify\.app$/i,
+];
+
+function isPreviewHost(host) {
+  if (!host || host === CANONICAL_HOST || host === `www.${CANONICAL_HOST}`) return false;
+  return PREVIEW_HOST_PATTERNS.some((re) => re.test(host));
+}
 const distDir = path.resolve('dist');
 const port = Number(process.env.PORT) || 3000;
 
@@ -125,6 +139,11 @@ function sendFile(req, res, filePath, statusCode = 200) {
     'Cache-Control': getCacheControl(filePath),
     Vary: 'Accept-Encoding',
   };
+
+  const preview = isPreviewHost(getRequestHost(req));
+  if (preview && ext === '.html') {
+    headers['X-Robots-Tag'] = 'noindex, nofollow';
+  }
 
   const encoding =
     COMPRESSIBLE.has(ext) && !res.getHeader?.('Content-Encoding')

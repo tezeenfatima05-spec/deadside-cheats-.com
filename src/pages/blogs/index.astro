@@ -19,10 +19,10 @@ import type { IconName } from '../../components/icons/types';
 import { Button } from '@/components/starwind/button';
 import { ROUTES } from '../../utils/path';
 
-const seo = resolvePageSeo('/blog/');
+const seo = resolvePageSeo('/blogs/');
 const breadcrumbs = [
   { name: 'Home', path: '/' },
-  { name: 'Blog', path: '/blog/' },
+  { name: 'Blogs', path: '/blogs/' },
 ];
 
 const featured = getFeaturedBlogPost();
@@ -40,7 +40,7 @@ const tagIcon = (tag: string): IconName => blogTagIcons[tag] ?? 'tag';
     collectionPageSchema({
       name: t.blog.title,
       description: t.blog.subtitle,
-      url: '/blog/',
+      url: '/blogs/',
     }),
     breadcrumbSchema(breadcrumbs),
   ]}
@@ -61,6 +61,20 @@ const tagIcon = (tag: string): IconName => blogTagIcons[tag] ?? 'tag';
         <h1 id="blog-latest-title" class="section-header__title">{t.blog.latestTitle}</h1>
         <p class="section-header__subtitle">{t.blog.latestSubtitle}</p>
       </header>
+
+      <form class="mt-8 max-w-xl" role="search" method="get" action="/blogs/">
+        <label for="blog-search" class="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+          {t.blog.searchLabel}
+        </label>
+        <input
+          id="blog-search"
+          name="q"
+          type="search"
+          class="mt-2 w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm shadow-xs"
+          placeholder={t.blog.searchPlaceholder}
+          autocomplete="off"
+        />
+      </form>
 
       <div class="mt-8 flex flex-col gap-4 lg:mt-10 lg:flex-row lg:items-end lg:justify-between lg:gap-6">
         <div

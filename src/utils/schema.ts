@@ -28,7 +28,7 @@ export function websiteSchema() {
     url: `${SITE_ORIGIN}/`,
     inLanguage: 'en-US',
     description:
-      'Dota 2 cheats with scripts, map hack, zoom hack, Skin Changer and ranked-safe tiers for PC.',
+      'Deadside cheats with scripts, map hack, zoom hack, Cloud DMA and ranked-safe tiers for PC.',
   };
 }
 

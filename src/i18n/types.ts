@@ -168,8 +168,13 @@ export interface Translations {
     sortLabel: string;
     sortNewest: string;
     sortOldest: string;
+    sortAz: string;
+    sortZa: string;
     sortShortRead: string;
     sortLongRead: string;
+    searchLabel: string;
+    searchPlaceholder: string;
+    filterAllLabel: string;
     emptyFilter: string;
     viewAll: string;
     read: string;

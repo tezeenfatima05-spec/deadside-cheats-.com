@@ -1,8 +1,9 @@
-/** Blog index topic filters + Starwind sort select. */
+/** Blog index topic filters, search (?q=), and sort select. */
 export function initBlogIndexFilters(emptyMessage: string) {
   const grid = document.getElementById('blog-grid');
   const emptyEl = document.getElementById('blog-empty');
   const sortRoot = document.getElementById('blog-sort-select');
+  const searchInput = document.getElementById('blog-search') as HTMLInputElement | null;
   if (!grid) return;
 
   const filters = document.querySelectorAll<HTMLButtonElement>('[data-blog-filter]');
@@ -30,20 +31,33 @@ export function initBlogIndexFilters(emptyMessage: string) {
     return event.target === root || root.contains(event.target as Node);
   };
 
+  const searchQuery = () => (searchInput?.value ?? '').trim().toLowerCase();
+
+  const readSearchFromUrl = () => {
+    const q = new URLSearchParams(window.location.search).get('q');
+    if (searchInput && q) searchInput.value = q;
+  };
+
   const compareCards = (a: HTMLElement, b: HTMLElement, sort: string) => {
     const tsA = Number(a.getAttribute('data-ts') ?? 0);
     const tsB = Number(b.getAttribute('data-ts') ?? 0);
     const readA = Number(a.getAttribute('data-read-minutes') ?? 0);
     const readB = Number(b.getAttribute('data-read-minutes') ?? 0);
+    const titleA = (a.getAttribute('data-title') ?? '').toLowerCase();
+    const titleB = (b.getAttribute('data-title') ?? '').toLowerCase();
+
     if (sort === 'oldest') return tsA - tsB;
     if (sort === 'short') return readA - readB;
     if (sort === 'long') return readB - readA;
+    if (sort === 'az') return titleA.localeCompare(titleB);
+    if (sort === 'za') return titleB.localeCompare(titleA);
     return tsB - tsA;
   };
 
   const apply = () => {
     const tag = activeTag();
     const sort = getSort();
+    const q = searchQuery();
     const items = cards();
 
     const sorted = [...items].sort((a, b) => compareCards(a, b, sort));
@@ -51,7 +65,10 @@ export function initBlogIndexFilters(emptyMessage: string) {
 
     let visibleCount = 0;
     items.forEach((el) => {
-      const match = tag === 'all' || el.getAttribute('data-tag') === tag;
+      const tagMatch = tag === 'all' || el.getAttribute('data-tag') === tag;
+      const haystack = (el.getAttribute('data-search') ?? '').toLowerCase();
+      const searchMatch = !q || haystack.includes(q);
+      const match = tagMatch && searchMatch;
       el.classList.toggle('hidden', !match);
       if (match) visibleCount += 1;
     });
@@ -77,7 +94,16 @@ export function initBlogIndexFilters(emptyMessage: string) {
 
   document.addEventListener('starwind:value-change', onSortChange);
 
-  // Starwind select hydrates after first paint — re-apply once ready.
-  requestAnimationFrame(apply);
+  searchInput?.addEventListener('input', () => {
+    const url = new URL(window.location.href);
+    const value = searchInput.value.trim();
+    if (value) url.searchParams.set('q', value);
+    else url.searchParams.delete('q');
+    window.history.replaceState({}, '', url);
+    apply();
+  });
+
+  readSearchFromUrl();
+  apply();
   window.setTimeout(apply, 0);
 }

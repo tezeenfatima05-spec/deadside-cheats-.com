@@ -29,13 +29,13 @@ function link(text: string, href: string): string {
   return `<a href="${normalizeInternalPath(href)}">${text}</a>`;
 }
 
-const elite = link('Dota 2 Elite', productPath('elite'));
+const elite = link('Deadside Elite', productPath('elite'));
 const lite = link('Lite tier (map hack & ESP)', ROUTES.products);
 const pro = link('Pro tier (scripts included)', ROUTES.products);
-const productsHub = link('Dota 2 products', ROUTES.products);
+const productsHub = link('Deadside products', ROUTES.products);
 const hwid = link('HWID Spoofer', productPath('hwid-spoofer'));
 const ugc = link('UGC', productPath('ugc'));
-const skin = link('Skin Changer', productPath('unlock-all'));
+const skin = link('Cloud DMA', productPath('cloud-dma'));
 const faqPage = link('full FAQ', ROUTES.faq);
 const blog = link('blog guides', ROUTES.blog);
 
@@ -44,15 +44,15 @@ export const siteFaqs: SiteFaqItem[] = [
     id: 'status',
     topic: 'setup',
     icon: 'faqStatus',
-    q: 'Where do I check if Dota 2 cheats are online?',
-    a: a('The live status banner is on dotacheats.com and in the Discord #status channel. Always check after a Dota 2 or VAC update.'),
+    q: 'Where do I check if Deadside cheats are online?',
+    a: a('The live status banner is on deadside-cheats.com and in the Discord #status channel. Always check after a Deadside or VAC update.'),
   },
   {
     id: 'after-buy',
     topic: 'setup',
     icon: 'faqAfterBuy',
     q: 'What happens after I buy?',
-    a: a('Your portal unlocks the loader, setup guide and config library via our secure checkout. Follow the guide before launching Dota 2.'),
+    a: a('Your portal unlocks the loader, setup guide and config library via our secure checkout. Follow the guide before launching Deadside.'),
   },
   {
     id: 'ban-risk',
@@ -66,7 +66,7 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'setup',
     icon: 'faqPlatforms',
     q: 'Which platforms are supported?',
-    a: a('Dota 2 via Steam on Windows 10/11 64-bit only. macOS and Linux are not supported.'),
+    a: a('Deadside via Steam on Windows 10/11 64-bit only. macOS and Linux are not supported.'),
   },
   {
     id: 'license-move',
@@ -86,7 +86,7 @@ export const siteFaqs: SiteFaqItem[] = [
     id: 'what-is-esp',
     topic: 'esp',
     icon: 'faqWhatIsEsp',
-    q: 'What is Dota 2 map hack / ESP?',
+    q: 'What is Deadside map hack / ESP?',
     a: `Map hack and hero ESP show enemy positions, wards, runes and jungle camps through fog of war. ${lite} covers awareness overlays. ${pro} and ${elite} add script modules on top.`,
     scopes: ['lite', 'pro', 'elite'],
   },
@@ -102,7 +102,7 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'plans',
     icon: 'faqWhichTierEsp',
     q: 'Which tier do I need for map hack only?',
-    a: `${lite} is awareness only: hero ESP, ward locator, rune timers and zoom hack. ${pro} adds scripts. ${elite} adds bots, kill steal and Skin Changer.`,
+    a: `${lite} is awareness only: hero ESP, ward locator, rune timers and zoom hack. ${pro} adds scripts. ${elite} adds bots, kill steal and Cloud DMA.`,
     scopes: ['lite'],
   },
   {
@@ -139,7 +139,7 @@ export const siteFaqs: SiteFaqItem[] = [
     id: 'undetected',
     topic: 'safety',
     icon: 'faqUndetected',
-    q: 'Are undetected Dota 2 cheats guaranteed?',
+    q: 'Are undetected Deadside cheats guaranteed?',
     a: a('No. Undetected is current status on the product page—not a permanent guarantee. Stop if the build shows updating, testing, or detected.'),
   },
   {
@@ -169,16 +169,16 @@ export const siteFaqs: SiteFaqItem[] = [
     id: 'skin-changer',
     topic: 'products',
     icon: 'faqSkinChanger',
-    q: 'Does Skin Changer modify my Steam inventory?',
+    q: 'Does Cloud DMA modify my Steam inventory?',
     a: `${skin} previews cosmetics locally on your client. Other players see your real inventory. Included with ${elite}; available standalone for cosmetic preview only.`,
-    scopes: ['unlock-all'],
+    scopes: ['cloud-dma'],
   },
   {
     id: 'external-loader',
     topic: 'products',
     icon: 'faqExternalLoader',
     q: 'Is the loader injected into the Steam folder?',
-    a: `DotaCheats runs external with cloud config sync—no files injected into the Dota 2 directory. VAC risk still applies. See ${productsHub}.`,
+    a: `DotaCheats runs external with cloud config sync—no files injected into the Deadside directory. VAC risk still applies. See ${productsHub}.`,
   },
   {
     id: 'blog-vs-cheats',
@@ -214,7 +214,7 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'plans',
     icon: 'faqWhoPro',
     q: 'Who should buy Pro?',
-    a: `Ranked players who want Auto Combo, Orbwalker and Activator with map hack included. Pro is the most popular tier at dotacheats.com.`,
+    a: `Ranked players who want Auto Combo, Orbwalker and Activator with map hack included. Pro is the most popular tier at deadside-cheats.com.`,
     scopes: ['pro'],
   },
   {
@@ -222,7 +222,7 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'plans',
     icon: 'faqWhoElite',
     q: 'Who should buy Elite?',
-    a: `Operators who want Auto Farm Bot, Auto Kill Steal, Skin Changer and priority patch delivery when slots are open.`,
+    a: `Operators who want Auto Farm Bot, Auto Kill Steal, Cloud DMA and priority patch delivery when slots are open.`,
     scopes: ['elite'],
   },
   {
@@ -230,14 +230,14 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'safety',
     icon: 'faqVacUpdate',
     q: 'What should I do after a VAC update?',
-    a: a('Check dotacheats.com status and Discord #status. Do not launch until the banner shows online. Load conservative presets after any patch.'),
+    a: a('Check deadside-cheats.com status and Discord #status. Do not launch until the banner shows online. Load conservative presets after any patch.'),
   },
   {
     id: 'discord-help',
     topic: 'setup',
     icon: 'faqDiscordHelp',
     q: 'How do I get install help?',
-    a: a('Open Discord after purchase with your order email, Windows version and Dota 2 client build. Staff walk through loader setup live.'),
+    a: a('Open Discord after purchase with your order email, Windows version and Deadside client build. Staff walk through loader setup live.'),
   },
   {
     id: 'turbo-ranked',
@@ -266,7 +266,7 @@ export const siteFaqs: SiteFaqItem[] = [
     id: 'private-cheats',
     topic: 'safety',
     icon: 'faqPrivateCheats',
-    q: 'What are private Dota 2 cheats?',
+    q: 'What are private Deadside cheats?',
     a: a('Private means per-user keys and maintained builds—not public zip packs. DotaCheats ships portal delivery for ESP, scripts and map hack tiers.'),
   },
   {
@@ -353,7 +353,7 @@ const blogTopicFaqs: Record<string, SiteFaqItem[]> = {
       topic: 'blog',
       icon: 'faqBlogGuideStart',
       q: 'Should I use console cheat codes in ranked?',
-      a: a('No. Valve lobby cheat codes only work in custom games with cheats enabled. Ranked requires separate dota cheats from dotacheats.com tiers.'),
+      a: a('No. Valve lobby cheat codes only work in custom games with cheats enabled. Ranked requires separate dota cheats from deadside-cheats.com tiers.'),
     },
     {
       id: 'blog-guide-tier',
@@ -417,7 +417,7 @@ const defaultBlogFaqs: SiteFaqItem[] = [
     topic: 'blog',
     icon: 'faqBlogDefault3',
     q: 'Will settings in this article work next patch?',
-    a: a('Re-check status after every Dota 2 update. Portal presets update with patch notes—reload configs instead of copying old sliders.'),
+    a: a('Re-check status after every Deadside update. Portal presets update with patch notes—reload configs instead of copying old sliders.'),
   },
 ];
 
@@ -473,7 +473,7 @@ export const compareRows = [
   { feature: 'Auto Kill Steal', icon: 'compareAutoKillSteal' as const, lite: false, pro: false, elite: true },
   { feature: 'Auto Dagon', icon: 'compareAutoDagon' as const, lite: false, pro: false, elite: true },
   { feature: 'Full map hack suite', icon: 'compareFullMapHack' as const, lite: false, pro: false, elite: true },
-  { feature: 'Skin Changer (Unlock All)', icon: 'compareSkinChanger' as const, lite: false, pro: false, elite: true },
+  { feature: 'Cloud DMA (Unlock All)', icon: 'compareSkinChanger' as const, lite: false, pro: false, elite: true },
   { feature: 'Priority patch queue', icon: 'comparePriorityPatch' as const, lite: false, pro: false, elite: true },
   { feature: 'Direct dev Discord support', icon: 'compareDevSupport' as const, lite: false, pro: false, elite: true },
   { feature: 'Cloud config backup', icon: 'compareCloudBackup' as const, lite: true, pro: true, elite: true },

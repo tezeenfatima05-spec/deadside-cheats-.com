@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { resolvePageSeo } from '../../config/seo';
+import { breadcrumbSchema, collectionPageSchema } from '../../utils/schema';
+import Icon from '../../components/icons/Icon.astro';
+import { Button } from '@/components/starwind/button';
+import { ROUTES } from '../../utils/path';
+
+const seo = resolvePageSeo('/reviews/');
+const breadcrumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Reviews', path: '/reviews/' },
+];
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  jsonLd={[
+    collectionPageSchema({ name: 'Deadside Cheats Reviews', description: seo.description, url: '/reviews/' }),
+    breadcrumbSchema(breadcrumbs),
+  ]}
+>
+  <section class="py-12 md:py-16">
+    <div class="mx-auto max-w-3xl px-5 text-center">
+      <Breadcrumbs items={breadcrumbs} class="mb-8 justify-center" />
+      <h1 class="text-3xl font-bold md:text-4xl">Reviews</h1>
+      <p class="mt-4 text-muted-foreground">
+        No published customer reviews are linked on this site yet. When genuine reviews are available, they will appear
+        here with search and filters—without fabricated ratings or purchases.
+      </p>
+      <div class="mt-10 rounded-2xl border border-dashed border-border bg-muted/20 px-6 py-12">
+        <Icon name="messageCircle" size={40} class="mx-auto text-muted-foreground" aria-hidden="true" />
+        <p class="mt-4 text-sm text-muted-foreground">Empty state — check back after verified reviews are collected.</p>
+      </div>
+      <div class="mt-10 flex flex-wrap justify-center gap-3">
+        <Button as="a" href={ROUTES.products} variant="primary">View products</Button>
+        <Button as="a" href={ROUTES.blog} variant="outline">Read guides</Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

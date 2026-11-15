@@ -4,15 +4,16 @@ import sitemap from '@astrojs/sitemap';
 import { sitemapSerialize } from './src/config/sitemap.ts';
 
 export default defineConfig({
-  site: 'https://dotacheats.com',
+  site: 'https://deadside-cheats.com',
   trailingSlash: 'always',
   redirects: {
-    '/cheats/': '/products/dota-2-cheats/',
-    '/cheats/lite/': '/products/dota-2-cheats/',
-    '/cheats/pro/': '/products/dota-2-cheats/',
-    '/cheats/elite/': '/products/dota-2-cheats/elite/',
-    '/cheats/compare/': '/blog/dota-2-lite-vs-pro/',
+    '/cheats/': '/products/deadside-cheats/',
+    '/cheats/lite/': '/products/deadside-cheats/',
+    '/cheats/pro/': '/products/deadside-cheats/',
+    '/cheats/elite/': '/products/deadside-cheats/deadside/',
+    '/cheats/compare/': '/blogs/deadside-cheats-comparison/',
     '/contact/': '/support/',
+    '/blog/': '/blogs/',
   },
   compressHTML: true,
   prefetch: {

@@ -1,21 +1,21 @@
-/** Checkout destinations keyed by internal product id (no affiliate codes). */
+/** Authorized merchant checkout URLs (referral ID TAZEEN). */
 export const CHECKOUT_URLS = {
-  dota2: 'https://zadeyo.com/products/dota-2',
-  skinChanger: 'https://zadeyo.com/products/skin-changer',
-  hwidSpoofer: 'https://zadeyo.com/products/hwid-spoofer',
-  ugc: 'https://zadeyo.com/products/ugc',
+  deadside: 'https://zadeyo.com/go/TAZEEN?to=%2Fproducts%2Fdeadside',
+  hwidSpoofer: 'https://zadeyo.com/go/TAZEEN?to=%2Fproducts%2Fhwid-spoofer',
+  ugc: 'https://zadeyo.com/go/TAZEEN?to=%2Fproducts%2Fugc',
+  cloudDma: 'https://zadeyo.com/go/TAZEEN?to=%2Fproducts%2Fcloud-dma',
 };
 
 /** Checkout paths → external product URLs (used by Node serve + Astro middleware). */
 export const CHECKOUT_PATH_REDIRECTS = new Map([
-  ['/go/dota-2', CHECKOUT_URLS.dota2],
-  ['/go/dota-2/', CHECKOUT_URLS.dota2],
-  ['/go/skin-changer', CHECKOUT_URLS.skinChanger],
-  ['/go/skin-changer/', CHECKOUT_URLS.skinChanger],
+  ['/go/deadside', CHECKOUT_URLS.deadside],
+  ['/go/deadside/', CHECKOUT_URLS.deadside],
   ['/go/hwid-spoofer', CHECKOUT_URLS.hwidSpoofer],
   ['/go/hwid-spoofer/', CHECKOUT_URLS.hwidSpoofer],
   ['/go/ugc', CHECKOUT_URLS.ugc],
   ['/go/ugc/', CHECKOUT_URLS.ugc],
+  ['/go/cloud-dma', CHECKOUT_URLS.cloudDma],
+  ['/go/cloud-dma/', CHECKOUT_URLS.cloudDma],
 ]);
 
 export function resolveCheckoutPathRedirect(pathname) {
