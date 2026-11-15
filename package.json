@@ -12,6 +12,7 @@
     "start": "node scripts/serve.mjs",
     "astro": "astro",
     "optimize:images": "node scripts/optimize-images.mjs",
+    "deploy": "npx wrangler deploy",
     "validate": "node scripts/check-leftovers.mjs && node scripts/check-seo.mjs",
     "validate:all": "npm run build && npm run validate"
   },

@@ -2,14 +2,24 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const root = process.cwd();
-const dist = path.join(root, 'dist');
-const source = path.join(dist, 'sitemap-0.xml');
+const distCandidates = [path.join(root, 'dist'), path.join(root, 'dist', 'client')];
 
-if (!fs.existsSync(source)) {
-  console.error('finalize-sitemap: dist/sitemap-0.xml not found — run astro build first.');
+function findSitemapSource() {
+  for (const dir of distCandidates) {
+    const candidate = path.join(dir, 'sitemap-0.xml');
+    if (fs.existsSync(candidate)) return { dir, source: candidate };
+  }
+  return null;
+}
+
+const found = findSitemapSource();
+
+if (!found) {
+  console.error('finalize-sitemap: sitemap-0.xml not found under dist/ or dist/client/ — run astro build first.');
   process.exit(1);
 }
 
+const { dir: dist, source } = found;
 const raw = fs.readFileSync(source, 'utf8');
 const urlCount = (raw.match(/<url>/g) ?? []).length;
 
@@ -49,4 +59,12 @@ const indexXml = `<?xml version="1.0" encoding="UTF-8"?>
 fs.writeFileSync(path.join(dist, 'sitemap-index.xml'), indexXml, 'utf8');
 fs.writeFileSync(path.join(dist, 'sitemap-0.xml'), formatted, 'utf8');
 
-console.log(`Sitemap finalized: ${urlCount} URLs → dist/sitemap.xml`);
+// Keep top-level dist/sitemap.xml when Astro wrote under dist/client (Cloudflare adapter).
+const topDist = path.join(root, 'dist');
+if (dist !== topDist) {
+  for (const name of ['sitemap.xml', 'sitemap-index.xml', 'sitemap-0.xml']) {
+    fs.copyFileSync(path.join(dist, name), path.join(topDist, name));
+  }
+}
+
+console.log(`Sitemap finalized: ${urlCount} URLs → ${path.relative(root, path.join(dist, 'sitemap.xml'))}`);
