@@ -4,6 +4,7 @@ export function initBlogIndexFilters(emptyMessage: string) {
   const emptyEl = document.getElementById('blog-empty');
   const sortRoot = document.getElementById('blog-sort-select');
   const searchInput = document.getElementById('blog-search') as HTMLInputElement | null;
+  const searchForm = document.getElementById('blog-search-form') as HTMLFormElement | null;
   if (!grid) return;
 
   const filters = document.querySelectorAll<HTMLButtonElement>('[data-blog-filter]');
@@ -80,7 +81,8 @@ export function initBlogIndexFilters(emptyMessage: string) {
   };
 
   filters.forEach((btn) => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (event) => {
+      event.preventDefault();
       filters.forEach((b) => b.setAttribute('aria-pressed', 'false'));
       btn.setAttribute('aria-pressed', 'true');
       apply();
@@ -94,16 +96,21 @@ export function initBlogIndexFilters(emptyMessage: string) {
 
   document.addEventListener('starwind:value-change', onSortChange);
 
+  searchForm?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    apply();
+  });
+
   searchInput?.addEventListener('input', () => {
     const url = new URL(window.location.href);
     const value = searchInput.value.trim();
     if (value) url.searchParams.set('q', value);
     else url.searchParams.delete('q');
-    window.history.replaceState({}, '', url);
+    window.history.replaceState({}, '', `${url.pathname}${url.search}`);
     apply();
   });
 
   readSearchFromUrl();
   apply();
-  window.setTimeout(apply, 0);
+  window.setTimeout(apply, 50);
 }

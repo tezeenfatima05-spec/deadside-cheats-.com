@@ -1,14 +1,13 @@
 import type { IconName } from '../components/icons/types';
 
 export const featureIcons: Record<string, IconName> = {
-  Scripts: 'stepCrosshair',
-  'Map Hack / ESP': 'featureEsp',
-  'Minimap & Runes': 'featureRadar',
-  'Auto Combo': 'featureAimbot',
+  ESP: 'featureEsp',
+  Aim: 'featureAimbot',
+  World: 'featureRadar',
+  Misc: 'featureUtilitySuite',
+  Profiles: 'compareCloudBackup',
+  Cloud: 'compareCloudBackup',
   'Utility Suite': 'featureUtilitySuite',
-  'Auto Farm Bot': 'compareAutoFarm',
-  'Stream Proof': 'streamProof',
-  'Zoom Hack': 'compareZoomHack',
   'Cloud Config & Updates': 'compareCloudBackup',
 };
 
@@ -45,19 +44,12 @@ export const blogTagIcons: Record<string, IconName> = {
 export const heroStatusPills: { icon: IconName; label: string }[] = [
   { icon: 'espActive', label: 'ESP Active' },
   { icon: 'radarOnline', label: 'Radar Online' },
-  { icon: 'seasonBuild', label: 'Season Build' },
-  { icon: 'undetected', label: 'Undetected' },
+  { icon: 'seasonBuild', label: 'Current Build' },
   { icon: 'softAim', label: 'Soft Aim Ready' },
-  { icon: 'noRecoil', label: 'No Recoil' },
-  { icon: 'streamProof', label: 'Stream Proof' },
   { icon: 'lootEsp', label: 'Loot ESP' },
   { icon: 'skeletonEsp', label: 'Skeleton ESP' },
-  { icon: 'uavRadar', label: 'UAV Radar' },
-  { icon: 'mapHack', label: 'Map Hack' },
   { icon: 'support247', label: '24/7 Support' },
   { icon: 'instantDelivery', label: 'Instant Delivery' },
-  { icon: 'rankedSafe', label: 'Ranked Safe' },
-  { icon: 'triggerBot', label: 'Trigger Bot' },
   { icon: 'boneSelect', label: 'Bone Select' },
   { icon: 'liveStatus', label: 'Live Status' },
   { icon: 'autoUpdates', label: 'Auto Updates' },

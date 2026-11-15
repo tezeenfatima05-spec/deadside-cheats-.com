@@ -74,19 +74,19 @@ const deadsideRequirements: SystemRequirement[] = [
 
 const gallery: ProductSlide[] = [
   {
-    src: `${gameplay}/deadside-feature-preview.png`,
+    src: 'https://ooszazcwzmwhitdxwtom.supabase.co/storage/v1/object/public/seo-media-library/deadside/986c4da2-dda6-40d4-9002-5802ae47beb5/1793624469198-5iaw32-zadeyo-deadside-1-visuals.webp',
     alt: 'Deadside player ESP overlay example with name and distance labels',
     caption: 'Player ESP',
     captionDesc: 'Boxes, skeletons, names, and corpse markers for PvP and PvE awareness.',
   },
   {
-    src: `${gameplay}/deadside-loot-esp.png`,
+    src: 'https://ooszazcwzmwhitdxwtom.supabase.co/storage/v1/object/public/seo-media-library/deadside/986c4da2-dda6-40d4-9002-5802ae47beb5/1793624470510-vroby2-zadeyo-deadside-2-world.webp',
     alt: 'Deadside loot and resource ESP layout example',
     caption: 'Loot and item ESP',
     captionDesc: 'Filters for weapons, consumables, resources, tools, and stashes.',
   },
   {
-    src: `${gameplay}/deadside-aimbot-ui.png`,
+    src: 'https://ooszazcwzmwhitdxwtom.supabase.co/storage/v1/object/public/seo-media-library/deadside/986c4da2-dda6-40d4-9002-5802ae47beb5/1793624470171-lectsq-zadeyo-deadside-3-aimbot.webp',
     alt: 'Deadside aimbot FOV and smoothing settings example',
     caption: 'Aimbot options',
     captionDesc: 'Configurable FOV, smoothing, bone selection, and visibility checks.',

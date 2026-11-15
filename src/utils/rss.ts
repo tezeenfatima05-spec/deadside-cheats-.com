@@ -33,8 +33,8 @@ export function buildRssFeed(): string {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>DotaCheats Blog</title>
-    <link>${SITE_ORIGIN}/blog/</link>
+    <title>Deadside Cheats Blog</title>
+    <link>${SITE_ORIGIN}/blogs/</link>
     <description>Deadside cheat guides, patch notes, and setup walkthroughs from deadside-cheats.com.</description>
     <language>en-us</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>

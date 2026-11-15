@@ -3,8 +3,8 @@ import { t } from '../i18n';
 import { Separator } from '@/components/starwind/separator';
 
 const resourceLinks = [
-  { href: '/blog/', label: 'Blog archive', ariaLabel: 'Blog' },
-  { href: '/products/deadside-cheats/elite/', label: 'Elite cheats', ariaLabel: 'Elite cheats' },
+  { href: '/blogs/', label: 'Blog archive', ariaLabel: 'Blogs' },
+  { href: '/products/deadside-cheats/deadside/', label: 'Deadside software', ariaLabel: 'Deadside software' },
   { href: '/products/deadside-cheats/', label: 'Products & utilities', ariaLabel: 'Products' },
   { href: '/support/', label: t.footer.support },
 ];
@@ -22,7 +22,7 @@ const legalLinks = [
       <div class="space-y-4">
         <a href="/" class="inline-flex items-center gap-2.5 font-[family-name:var(--font-heading)] text-lg font-bold" aria-label={t.ui.homeAria}>
           <img src="/logo.svg" alt="" width="32" height="32" class="rounded-md" />
-          <span aria-hidden="true">Dota<span class="text-primary">Cheats</span></span>
+          <span class="lowercase" aria-hidden="true">deadside <span class="text-primary">cheats</span></span>
         </a>
         <p class="text-sm text-muted-foreground">{t.footer.tagline}</p>
       </div>

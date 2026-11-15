@@ -1,12 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { t } from '../i18n';
 import { resolvePageSeo } from '../config/seo';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
-import ContactSupportSection from '../components/ContactSupportSection.astro';
+import Icon from '../components/icons/Icon.astro';
+import { Button } from '@/components/starwind/button';
 import { breadcrumbSchema, webPageSchema } from '../utils/schema';
 
 const seo = resolvePageSeo('/support/');
+const discordUrl = 'https://discord.com/invite/wmFY3xVtwm';
 ---
 
 <BaseLayout
@@ -14,8 +15,8 @@ const seo = resolvePageSeo('/support/');
   description={seo.description}
   jsonLd={[
     webPageSchema({
-      name: t.support.title,
-      description: t.support.subtitle,
+      name: 'Support',
+      description: seo.description,
       url: '/support/',
     }),
     breadcrumbSchema([
@@ -24,13 +25,34 @@ const seo = resolvePageSeo('/support/');
     ]),
   ]}
 >
-  <div class="mx-auto max-w-6xl px-5 pt-8 md:pt-10">
-    <Breadcrumbs
-      items={[
-        { name: 'Home', path: '/' },
-        { name: 'Support', path: '/support/' },
-      ]}
-    />
-  </div>
-  <ContactSupportSection titleId="support-page-title" showTicketTips />
+  <section class="py-16 md:py-24">
+    <div class="mx-auto max-w-xl px-5 text-center">
+      <Breadcrumbs
+        items={[
+          { name: 'Home', path: '/' },
+          { name: 'Support', path: '/support/' },
+        ]}
+        class="mb-10 justify-center"
+      />
+      <p class="text-sm font-semibold uppercase tracking-wider text-primary">Support</p>
+      <h1 class="mt-3 text-3xl font-bold md:text-4xl">Get help on Discord</h1>
+      <p class="mt-4 text-muted-foreground">
+        Click below to join our Discord for setup help, product questions, and live support.
+      </p>
+      <div class="mt-10">
+        <Button
+          as="a"
+          href={discordUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="primary"
+          size="lg"
+          class="rounded-xl"
+        >
+          Join Discord
+          <Icon name="arrowRight" size={17} />
+        </Button>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
